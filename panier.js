@@ -1,6 +1,12 @@
 let teddy = JSON.parse(localStorage.getItem("Panier")) ? JSON.parse(localStorage.getItem("Panier")) : [];
 console.table(teddy);
 
+var total = 0
+
+
+
+
+
 for (i = 0; i < teddy.length; i++) {
   var title = teddy[i].name
   var price = teddy[i].price
@@ -28,21 +34,29 @@ function addItemToCart(title, price, imageSrc, id, color) {
     }
   }
   var cartRowContents = `
-        <div class="cart-item cart-column">
+        <div class="cart-item cart-column row">
             <img class="cart-item-image" src="${imageSrc}" width="100" height="100">
             <span class="cart-item-title">${title},<br>${color}</span>
         </div>
         <span class="cart-price cart-column">${price} €</span>
-        <div class="cart-quantity cart-column">
-            <input class="cart-quantity-input" type="number" value="1">
-            <button class="btn btn-danger" type="button">supprimer l'article </button>
-        </div>`
+        <div class="cart-quantity cart-column row">
+            <input class="cart-quantity-input " type="number" value="1">
+            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+            
+        </div>
+       
+
+        `
   cartRow.innerHTML = cartRowContents
   cartItems.append(cartRow)
   cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
   cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
 }
 // Retire un article du panier
+/*function remove {
+  localStorage.removeItem('teddy[i].id');
+}*/
+
 var removeCartItemButtons = document.getElementsByClassName('btn-danger')
 for (var i = 0; i < removeCartItemButtons.length; i++) {
   var button = removeCartItemButtons[i]
@@ -87,81 +101,152 @@ function updateCartTotal() {
   document.getElementsByClassName('cart-total-price')[0].innerText = total + ' €'
 
 
-}
+  if (total === 0) {
+    document.getElementById("panier_vide").innerHTML = ` <h3 class="mb-4"> est vide...</h3><a href="index.html">Parcourez nos produits</a>`
+    localStorage.clear();
+  } else {
+    document.getElementById("panier_vide").innerHTML = ` <h3 class="mb-4"> </h3>`
 
-document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked)
-
-function purchaseClicked() {
-  alert('Thank you for your purchase')
-  var cartItems = document.getElementsByClassName('cart-items')[0]
-  while (cartItems.hasChildNodes()) {
-    cartItems.removeChild(cartItems.firstChild)
   }
-  updateCartTotal()
+
+
 }
+
 
 document.getElementById("form").innerHTML += `
-<div class="formulaire">
-        <form class="container-fluid ">
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <label for="validationDefault01">Prénom</label>
-                    <input type="text" class="form-control" id="validationDefault01" placeholder="Prénom" value="Prénom"
-                        required />
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="validationDefault02">Nom</label>
-                    <input type="text" class="form-control" id="validationDefault02" placeholder="Nom" value="Nom"
-                        required />
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-md-12 mb-3">
-                    <label for="inputAddress">Address</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" />
-                </div>
-            </div>
-
-            <div class="form-row ">
-
-                <div class="col-md-6 mb-3">
-                    <label for="validationDefault03">ville</label>
-                    <input type="text" class="form-control" id="validationDefault03" placeholder="ville" required />
-                </div>
-
-                <div class="col-md-6 mb-3">
-                    <label for="validationDefault05">Code postal</label>
-                    <input type="number" class="form-control" id="validationDefault05" placeholder="Code postal"
-                        required />
-                </div>
-
-            </div>
-            <div class="col-md-12 mb-3">
-                <label for="validationDefaultUsername">e-mail</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                    </div>
-                    <input type="email" class="form-control" id="validationDefaultUsername" placeholder="e-mail"
-                        aria-describedby="inputGroupPrepend2" required />
-                </div>
-            </div>
+<div class="container">
+<form id="form" class="form">
+    <div class="form-control success error">
+        <label for="firstName">Nom </label>
+        <input type="text" placeholder="firstName" id="firstName" required />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
     </div>
-    <div class="form-group">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required />
-            <label class="form-check-label" for="invalidCheck2">
-            Accepter les termes et conditions
-            </label>
+
+    <div class="form-control success error">
+        <label for="lastName">Prénom</label>
+        <input type="text" placeholder="lastName" id="lastName" required />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+    </div>
+
+    <div class="form-control success error">
+        <label for="address">address</label>
+        <input type="text" placeholder="address" id="address" required />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+    </div>
+
+    <form id="form" class="form">
+        <div class="form-control success error">
+            <label for="city">ville</label>
+            <input type="text" placeholder="paris" id="city" required />
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
         </div>
-    </div>
-    <button class="btn btn-primary" type="submit">envoyer le formulaire</button>
+        <div class="form-control success error">
+            <label>Email</label>
+            <input type="email" placeholder="a@florin-pop.com" id="email" required />
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+        </div>
+        <button>Valider la commande</button>
     </form>
-    </div>
+</div>
 `
-
-
+const form = document.getElementById('form');
+const firstName = document.getElementById('firstName');
+const lastName = document.getElementById('lastName');
+const address = document.getElementById('address');
+const city = document.getElementById('city');
 const email = document.getElementById('email');
+form.addEventListener('input', e => {
+  e.preventDefault();
+
+  checkInputs();
+});
+
+function checkInputs() {
+  // trim to remove the whitespaces
+  const firstNameValue = firstName.value.trim();
+  const emailValue = email.value.trim();
+  const lastNameValue = lastName.value.trim();
+  const addressValue = address.value.trim();
+  const cityValue = city.value.trim();
+
+  if (firstNameValue === '') {
+
+    setErrorFor(firstName, 'firstName cannot be blank');
+  } else if (!regexText(firstNameValue)) {
+    setErrorFor(firstName, 'Not a valid Name');
+  } else {
+    setSuccessFor(firstName);
+  }
+
+  if (emailValue === '') {
+    setErrorFor(email, 'Email cannot be blank');
+  } else if (!regexMail(emailValue)) {
+    setErrorFor(email, 'Not a valid email');
+  } else {
+    setSuccessFor(email);
+  }
+
+  if (lastNameValue === '') {
+    setErrorFor(lastName, ' lastName cannot be blank');
+  } else if (!regexText(lastNameValue)) {
+    setErrorFor(lastName, 'Not a valid Name');
+  } else {
+    setSuccessFor(lastName);
+  }
+
+  if (addressValue === '') {
+    setErrorFor(address, 'address cannot be blank');
+  } else if (!regexAdress(addressValue)) {
+    setErrorFor(address, 'Not a valid address');
+  } else {
+    setSuccessFor(address);
+  }
+
+  if (cityValue === '') {
+    setErrorFor(city, 'city cannot be blank');
+  } else if (!regexText(cityValue)) {
+    setErrorFor(city, 'Not a valid city Name');
+  } else {
+    setSuccessFor(city);
+  }
+
+
+  function setErrorFor(input, message) {
+    const formControl = input.parentElement;
+    const small = formControl.querySelector('small');
+    formControl.className = 'form-control error';
+    small.innerText = message;
+  }
+
+  function setSuccessFor(input) {
+    const formControl = input.parentElement;
+    formControl.className = 'form-control success';
+  }
+
+  function regexMail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function regexText(Text) {
+    return /^[A-Za-z]{2,24}$/.test(Text);
+  }
+
+  function regexAdress(Adress) {
+    return /^(([a-zA-ZÀ-ÿ0-9]+[\s\-]{1}[a-zA-ZÀ-ÿ0-9]+)){1,10}$/.test(Adress);
+  }
+}
+
+/*const email = document.getElementById('email');
 
 
 form.addEventListener('submit', e => {
@@ -170,4 +255,4 @@ form.addEventListener('submit', e => {
   checkInputs();
 });
 
-function checkInputs() {
+function checkInputs() {}*/

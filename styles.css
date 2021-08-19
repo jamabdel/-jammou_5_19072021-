@@ -14,29 +14,25 @@ article{
   
 }
 .cards {
-  display: grid;
-  grid-template-columns: 1fr  1fr 1fr;
-  width: 100%;
-  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
+
 .card {
   display: flex;
   flex-direction: column;
   margin: 20px;
-  background-color: rgb(133, 58, 143);
+  background-color: rgb(99, 61, 104) !important; 
   border-radius: 30px;
   width: 20rem;
   
 }
 
+
 .card img {
-  object-fit: cover;
   width: 100%;
-  height: 250px;
-}
-
-
-.card img {
   border-radius: 10px;
   margin: 4px auto 0;
   height: 250px;
@@ -45,6 +41,207 @@ article{
   z-index: 2;
   object-fit: cover;
 }
+/*panier *******/
+.content-section {
+  margin: 1em;
+}
+.cart-header {
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #333;
+}
+.cart-column {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin-right: 1.5em;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.cart-price {
+  width: 20%;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.cart-quantity {
+  width: 35%;
+}
+
+.cart-item-title {
+  color: #333;
+  margin-left: .5em;
+  font-size: 1.2em;
+}
+
+.cart-item-image {
+  width: 150px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.cart-column {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    margin-right: 1.5em;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+.cart-row {
+    display: flex;
+}
+
+.cart-item {
+    width: 45%;
+}
+
+.btn-danger {
+    color: white;
+    background-color: #EB5757;
+    border: none;
+    border-radius: .3em;
+    font-weight: bold;
+}
+
+.btn-danger:hover {
+    background-color: #CC4C4C;
+}
+
+.cart-quantity-input {
+    height: 34px;
+    width: 50px;
+    border-radius: 5px;
+    border: 1px solid #56CCF2;
+    background-color: #eee;
+    color: #333;
+    padding: 0;
+    text-align: center;
+    font-size: 1.2em;
+    margin-right: 25px;
+}
+
+.cart-row:last-child {
+    border-bottom: 1px solid black;
+}
+
+.cart-row:last-child .cart-column {
+    border: none;
+}
+
+.cart-total {
+    text-align: end;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.cart-total-title {
+    font-weight: bold;
+    font-size: 2em;
+    color: black;
+    margin-right: 20px;
+}
+
+.cart-total-price {
+    color: rgb(156, 35, 35);
+    font-size: 2em;
+}
+
+.btn-purchase {
+    display: block;
+    margin: 40px auto 80px auto;
+    font-size: 1.75em;
+}
+.formulaire{
+ 
+  display: flex;
+  justify-content: center;
+  background-color: rgb(131, 105, 131);
+  width: 100%;
+  border: 1px solid black;
+  display: block;
+  margin: 1%  ;
+  padding: 20px;
+}
+.form-control {
+	margin-bottom: 10px;
+	padding-bottom: 20px;
+	position: relative;
+}
+
+.form-control label {
+	display: inline-block;
+	margin-bottom: 5px;
+}
+.form-control input {
+	border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-family: inherit;
+	font-size: 14px;
+	padding: 10px;
+	width: 100%;
+}
+.form-control input:focus {
+	outline: 0;
+	border-color: #777;
+}
+.form-control.success input {
+	border-color: #2ecc71;
+}
+.form-control.error input {
+	border-color: #e74c3c;
+}
+.form-control i {
+	visibility: hidden;
+	position: absolute;
+	top: 40px;
+	right: 10px;
+}
+
+
+.form-control.success i.fa-check-circle {
+	color: #2ecc71;
+	visibility: visible;
+}
+
+.form-control.error i.fa-exclamation-circle {
+	color: #e74c3c;
+	visibility: visible;
+}.form-control small {
+	color: #e74c3c;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	visibility: hidden;
+}
+
+.form-control.error small {
+	visibility: visible;
+}
+
+.form button {
+	background-color: #8e44ad;
+	border: 2px solid #8e44ad;
+	border-radius: 4px;
+	color: #fff;
+	display: block;
+	font-family: inherit;
+	font-size: 16px;
+	padding: 10px;
+	margin-top: 20px;
+	width: 100%;
+}
+
+h5.card-title  {
+  padding: 15px;
+  font-size: 1.5rem;
+  color:rgb(230, 43, 230) !important;
+}
+
+
 h3 {
   padding-top: 20px;
   color:black;
@@ -53,7 +250,6 @@ h3 {
   font-size: 1.2rem;
   font-weight: 900;
 }
-
 h2 {
   padding-top: 60px;
   color:black;
@@ -66,11 +262,13 @@ h2 {
 p {
   padding: 15px;
   font-size: 0.9rem;
+  color: #fff;
 }
+
 
 a
 {
-  color:black !important;
+  color:purple !important;
   text-decoration: none;
 }
 

@@ -25,7 +25,7 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
                     </select>
                 </div>
                 <div>
-                    <button id="ajoutAuPanier" class="btn btn-primary">Ajouter au panier</button>
+                    <button id="ajoutAuPanier" class="btn btn-primary shop-item-button">Ajouter au panier</button>
                     <i class="fas fa-cart-plus"></i>
                 </div>
             </div>
