@@ -154,15 +154,21 @@ article{
     margin: 40px auto 80px auto;
     font-size: 1.75em;
 }
-.formulaire{
- 
+
+.forme{
   display: flex;
   justify-content: center;
+  
+}
+
+.form{
+   display: flex;
+  align-self: center;
+  flex-direction: row;
   background-color: rgb(131, 105, 131);
-  width: 100%;
   border: 1px solid black;
   display: block;
-  margin: 1%  ;
+  margin: 0 10%  ;
   padding: 20px;
 }
 .form-control {

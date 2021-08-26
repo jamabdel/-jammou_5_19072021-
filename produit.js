@@ -85,22 +85,3 @@ function addToLocalStorage(order, commande) {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-/*function chooseColor() {
-    for (let i = 0; i < res.colors.length; i++) {
-        document.getElementById("color_select").innerHTML +=
-            `<option value="${res.colors[i]}">${res.colors[i]}</option>`
-    }
-    console.log(res.colors[i]);
-};
-
-chooseColor()*/
