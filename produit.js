@@ -68,7 +68,8 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
 
 
             }
-
+            
+            console.log(cart);
 
         })
 

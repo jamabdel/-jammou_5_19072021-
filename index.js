@@ -3,6 +3,10 @@ fetch('http://localhost:3000/api/teddies')
   .then(res => {
     console.log(res)
 
+
+    //Boucle for qui permet la création de notre page
+
+
     for (i = 0; i < res.length; i++) {
       console.log(res[i].name);
 
@@ -23,9 +27,7 @@ fetch('http://localhost:3000/api/teddies')
 
     }
 
-    for (let i of res) {
-      console.log(i);
-    }
 
 
-  });
+
+  })

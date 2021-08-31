@@ -282,3 +282,15 @@ footer {
   background-color: #F3E9F1;
 
 }
+
+
+/*comfirmation**************************************************/
+.cardc {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  background-color: rgb(99, 61, 104) !important; 
+  border-radius: 30px;
+  width: 20rem;
+  
+}

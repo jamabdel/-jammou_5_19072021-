@@ -10,7 +10,7 @@
     <script src="https://kit.fontawesome.com/e1e907064b.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>*/
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
@@ -23,53 +23,57 @@
 </head>
 
 <body>
-    <div class="container">
-        <main>
-            <header>
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="index.html"><img class="mr-3" src="./images/logo.png" height="60"
-                            alt="logo Orinoco" /></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div id="navbarContent" class="collapse navbar-collapse">
-                        <ul class="navbar-nav w-100 d-flex justify-content-end">
-                            <li class="nav-item active"><a class="nav-link font-weight-bold"
-                                    href="index.html">Accueil</a></li>
-                            <li class="nav-item">
-                                <a class="nav-link font-weight-bold" href="./panier.html">
-                                    Panier
-                                    <i class="fas fa-shopping-cart fa-1x"></i>
-                                    <span id="cart_number"></span>
-                                </a>
-                    </div>
-                </nav>
-            </header>
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="index.html"><img class="mr-3" src="./images/logo.png" height="60"
+                        alt="logo Orinoco" /></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="navbarContent" class="collapse navbar-collapse">
+                    <ul class="navbar-nav w-100 d-flex justify-content-end">
+                        <li class="nav-item active"><a class="nav-link font-weight-bold" href="index.html">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link font-weight-bold" href="./panier.html">
+                                Panier
+                            </a></li>
+                        <li class="nav-item"><a class="nav-link font-weight-bold"
+                                href="./confirmation.html">Commande</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-            <article>
-                <h2 class="list-inline text-center pt-3">Nos Produits</h2>
-                <div class="container">
-                    <div class="row mt-20">
-                        <div class="col-sm">
-                            <div class="cards" id="cards">
+    <article>
+        <h2 class="list-inline text-center pt-3">Nos Produits</h2>
+        <div class="container">
+            <div class="row mt-20">
+                <div class="col-sm">
+                    <div class="cards" id="cards">
 
 
-                            </div>
-                        </div>
-            </article>
-            <footer class="text-dark">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <ul class="list-inline text-center  pt-4">
-                                <li class="list-inline-item"><a href="mailto:contact@Orinoco.com">Contacter</a></li>
-                                <li class="list-inline-item"><a href="#id">CGV</a></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
-            </footer>
-        </main>
+            </div>
+        </div>
+    </article>
+    <footer class="text-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <ul class="list-inline text-center  pt-4">
+                        <li class="list-inline-item"><a href="mailto:contact@Orinoco.com">Contacter</a></li>
+                        <li class="list-inline-item"><a href="#id">CGV</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </main>
     </div>
     <script src="/index.js"></script>
 

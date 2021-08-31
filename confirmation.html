@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="../../backend/images/fav.png">
     <link rel="stylesheet" href="/styles.css" />
     <script src="https://kit.fontawesome.com/e1e907064b.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -22,7 +23,7 @@
 </head>
 
 <body>
-    <main class="container ">
+    <div class="container">
         <header>
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
@@ -48,45 +49,42 @@
                 </nav>
             </div>
         </header>
+
         <article>
-            <h2 class="list-inline text-center pt-3">Votre panier</h2>
-            <div class="list-inline text-center pt-3" id="panier_vide"></div>
+            <h2 class="list-inline text-center pt-3">Récapitulatif de votre commande</h2>
 
 
+            <div class="row w-100 d-flex justify-content-center text-center">
+
+                <div cdivlass=" container mt-5" id="no_command"></div>
+
+            </div>
 
 
-            <section class="container content-section">
-
-                <div class="cart-row">
-                    <span class="cart-item cart-header cart-column">Article</span>
-                    <span class="cart-price cart-header cart-column">Prix</span>
-                    <span class="cart-quantity cart-header cart-column">Quantité</span>
-                </div>
-                <div class="cart-items">
-                </div>
-                <div class="cart-total">
-                    <strong class="cart-total-title">Total</strong>
-                    <span class="cart-total-price">0 €</span>
-                </div>
-
-            </section>
-            <div id="form"></div>
         </article>
 
-        <footer class="text-dark">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <ul class="list-inline text-center  pt-4">
-                            <li class="list-inline-item"><a href="mailto:contact@Orinoco.com">Contacter</a></li>
-                            <li class="list-inline-item"><a href="#">CGV</a></li>
-                        </ul>
-                    </div>
-                </div>
+        <footer>
+
+            <div class=" container  w-100 d-flex justify-content-center  ">
+
+                <ul class=" list-inline text-center pt-4">
+                    <li class="list-inline-item"><a href="mailto:contact@Orinoco.com">Contacter</a></li>
+                    <li class="list-inline-item"><a href="#id">CGV</a></li>
+                </ul>
             </div>
+
+
         </footer>
-    </main>
-    <script src="/panier.js"></script>
+
+    </div>
+
+
+
+
+
+
+    <script src="/confirmation.js"></script>
+
 
 </body>
 
