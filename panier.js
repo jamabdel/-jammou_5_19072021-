@@ -1,5 +1,4 @@
 let teddy = JSON.parse(localStorage.getItem("Panier")); // Récupération des données dans le LocalStorage et traduction de l'objet JSON 
-console.table(teddy);
 
 var total = 0;
 
@@ -98,13 +97,13 @@ function updateCartTotal() {
 
 // récupérer les ID des produits dans le localStorage dans un array
 let Panier = JSON.parse(localStorage.getItem("Panier"));
-console.log(Panier);
+
 let products = [];
 
 //*création d'un tableau contenant les articles commandés------------------------
 for (i = 0; i < Panier.length; i++) {
   products.push(Panier[i].id);
-  console.log(products);
+
 }
 
 document.getElementById("form").innerHTML += `
@@ -156,7 +155,6 @@ document.getElementById("form").innerHTML += `
 `;
 let contact = [];
 let dataBought = [];
-
 
 let sendform = document.querySelector(".btn-success");
 sendform.addEventListener("click", (event) => {
@@ -292,10 +290,7 @@ sendform.addEventListener("click", (event) => {
       console.log(data)
       localStorage.setItem("order", JSON.stringify(data)); //Màj du localstorage avec numero de commande
       localStorage.setItem("orderId", data.orderId); //Màj du localstorage avec numero de commande
-      //localStorage.setItem("data", data.contact);
       localStorage.setItem("products", JSON.stringify(data.products));
-
-      console.log(data.products);
       document.location.href = "confirmation.html"; // redirection vers la page confirmation
     })
     .catch((error) => {

@@ -29,7 +29,6 @@ fetch(`http://localhost:3000/api/teddies/${id}`) //Utilisation de FETCH pour ré
         // Boucle pour générer les couleurs disponibles en fonction de l'ourson choisit
         for (i = 0; i < res.colors.length; i++) {
             document.getElementById("color_Select").innerHTML += `<option value="${res.colors[i]}" selected>${res.colors[i]}</option>`
-            console.log(res.colors[i]);
         }
 
         const ajoutAuPanier = document.getElementById(`ajoutAuPanier`);

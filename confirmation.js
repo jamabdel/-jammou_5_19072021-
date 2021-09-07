@@ -11,7 +11,6 @@ function getCost(items) { // Additionner toutes les valeurs Price du tableau pro
     }, 0);
 }
 
-//localStorage.setItem("order", JSON.stringify(data));
 document.getElementById("no_command").innerHTML += `
 <div class="cardc text-center col-md-10 mw-100">
 <h5 class="card-title">Bonjour ${teddyConf.contact.lastName}  ${teddyConf.contact.firstName}</h5>
