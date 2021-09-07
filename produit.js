@@ -1,12 +1,8 @@
 let id = window.location.hash.substring(1); //Récupérer la valeur après le hashtag (#) id 
-console.log(id)
 
 fetch(`http://localhost:3000/api/teddies/${id}`) //Utilisation de FETCH pour récupérer les données pour chaque id 
     .then(res => res.json())
     .then(res => {
-
-        console.log(res);
-
         document.querySelector(".produit").innerHTML +=
             `
             <div class="card col-md-11">
@@ -29,20 +25,12 @@ fetch(`http://localhost:3000/api/teddies/${id}`) //Utilisation de FETCH pour ré
                 </div>
             </div>
         </div>
-
     `
-
-
-
         // Boucle pour générer les couleurs disponibles en fonction de l'ourson choisit
         for (i = 0; i < res.colors.length; i++) {
             document.getElementById("color_Select").innerHTML += `<option value="${res.colors[i]}" selected>${res.colors[i]}</option>`
             console.log(res.colors[i]);
         }
-
-
-
-
 
         const ajoutAuPanier = document.getElementById(`ajoutAuPanier`);
         // Evènement pour écouter le clique sur le bouton ajoutAuPanier, qui va permettre l'envoi des options sélectionnées dans le local storage
@@ -60,11 +48,8 @@ fetch(`http://localhost:3000/api/teddies/${id}`) //Utilisation de FETCH pour ré
             })
             localStorage.setItem("Panier", JSON.stringify(panier));
             alert("Article ajouté au panier !")
-
-
-
         })
-
-
-
+    })
+    .catch((error) => {
+        alert("Erreur : " + error);
     });

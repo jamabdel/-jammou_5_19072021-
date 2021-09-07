@@ -12,10 +12,7 @@ for (i = 0; i < teddy.length; i++) { // Création d'une boucle et les variable p
   addItemToCart(title, price, imageSrc, color, id);
   updateCartTotal();
 }
-
-
 // afficher les articles du panier dans le html sous forme de tableau
-
 function addItemToCart(title, price, imageSrc, color) {
   var cartRow = document.createElement("div");
   cartRow.classList.add("cart-row");
@@ -32,16 +29,13 @@ function addItemToCart(title, price, imageSrc, color) {
             
             <button class="btn btn-danger" type="button">supprimer</button>
         </div>
-       
         `;
-
   cartItems.append(cartRow);
   cartRow
     .getElementsByClassName("btn-danger")[0].addEventListener("click", removeCartItem)
   cartRow
     .getElementsByClassName("cart-quantity-input")[0]
     .addEventListener("change", quantityChanged)
-
 }
 
 function removeCartItem(event) {
@@ -49,6 +43,7 @@ function removeCartItem(event) {
   buttonClicked.parentElement.parentElement.remove();
   updateCartTotal(); // Màj du panier après suppression du produit
 }
+
 var removeCartItemButtons = document.getElementsByClassName("btn-danger"); // Suppression produit du panier
 for (var i = 0; i < removeCartItemButtons.length; i++) {
   teddy.splice(i, 1);
@@ -70,9 +65,6 @@ for (var i = 0; i < quantityInputs.length; i++) {
   input.addEventListener("change", quantityChanged);
 }
 
-
-
-
 //Màj du total dans le tableau
 function updateCartTotal() {
   var cartItemContainer = document.getElementsByClassName("cart-items")[0];
@@ -84,9 +76,9 @@ function updateCartTotal() {
     var quantityElement = cartRow.getElementsByClassName("cart-quantity-input")[0];
     var price = parseFloat(priceElement.innerText.replace("€", ""));
     var quantity = quantityElement.value;
-    total = total + price * quantity; //Calcul et affichage du prix total panier
+    total = total + price * quantity;
+    //Calcul et affichage du prix total panier
   }
-  console.log(quantityElement.value);
 
   document.getElementsByClassName("cart-total-price")[0].innerText =
     total + " €";
@@ -96,7 +88,7 @@ function updateCartTotal() {
       "panier_vide"
     ).innerHTML = ` <h3 class="mb-4"> est vide...</h3><a href="index.html">Parcourez nos produits</a>`;
     localStorage.clear(); //si le produit qu'on vient de suppriemr et le dernier dans le panier, alors on vide complétement le localStorage
-    document.location.href = "index.html";
+    document.location.href = "index.html"
   } else {
     document.getElementById(
       "panier_vide"
@@ -105,7 +97,6 @@ function updateCartTotal() {
 }
 
 // récupérer les ID des produits dans le localStorage dans un array
-
 let Panier = JSON.parse(localStorage.getItem("Panier"));
 console.log(Panier);
 let products = [];
@@ -170,10 +161,6 @@ let dataBought = [];
 let sendform = document.querySelector(".btn-success");
 sendform.addEventListener("click", (event) => {
   event.preventDefault();
-
-
-
-
   const form = document.getElementById("form"); //création du formulaire de commande
   const firstName = document.getElementById("firstName");
   const lastName = document.getElementById("lastName");
@@ -185,10 +172,6 @@ sendform.addEventListener("click", (event) => {
 
   form.addEventListener("input", (e) => {
     e.preventDefault();
-
-
-
-
     checkInputs();
   });
 
@@ -215,7 +198,6 @@ sendform.addEventListener("click", (event) => {
     } else {
       setSuccessFor(email);
     }
-
 
     //************************************************************fonction pour valider le Prénom
     if (lastNameValue === "") {
@@ -258,8 +240,6 @@ sendform.addEventListener("click", (event) => {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
-
-
     // ***********************************************les regEx du champ ville nom et Prénom
     function regexText(Text) {
       return /^[A-Za-z]{2,24}$/.test(Text);
@@ -276,6 +256,7 @@ sendform.addEventListener("click", (event) => {
       city: document.getElementById("city").value,
       email: document.getElementById("email").value,
     };
+    // Vérification du formulaire pour savoir si on envoie ou non la commande dans le local storage
 
     if (!regexText(firstNameValue) ||
       !regexMail(emailValue) ||
@@ -283,13 +264,9 @@ sendform.addEventListener("click", (event) => {
       !regexText(lastNameValue) ||
       !regexText(cityValue)) {
       alert("Il manque des valeurs à renseigner");
-
     }
 
-
     localStorage.setItem('contact', JSON.stringify(contactc)); // Ajout des informations de contact au Local Storage
-
-    console.log(contactc);
     contact = JSON.parse(localStorage.getItem('contact')) //on récupère les valeurs du formulaire stockées dans le localStorage
     for (i = 0; i < contact.length; i++) {
       contact.push(contact);
@@ -297,16 +274,10 @@ sendform.addEventListener("click", (event) => {
 
   }
 
-  console.log(contact);
-
   let dataBought = {
     contact,
     products,
   };
-  console.log(dataBought);
-
-
-
 
   fetch("http://localhost:3000/api/teddies/order", { // Requête POST pour envoyer l'objet Contact et le tableau products à l'API
       method: "POST",
@@ -325,7 +296,7 @@ sendform.addEventListener("click", (event) => {
       localStorage.setItem("products", JSON.stringify(data.products));
 
       console.log(data.products);
-      //document.location.href = "confirmation.html"; // redirection vers la page confirmation
+      document.location.href = "confirmation.html"; // redirection vers la page confirmation
     })
     .catch((error) => {
       alert("Erreur : " + error);
