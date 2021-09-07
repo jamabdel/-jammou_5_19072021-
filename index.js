@@ -1,10 +1,10 @@
-fetch('http://localhost:3000/api/teddies')
-  .then(res => res.json())
-  .then(res => {
+fetch('http://localhost:3000/api/teddies') //Utilisation de l'API avec FETCH pour récupérer les données
+  .then(res => res.json()) // Si réponse serveur ok, transforme les données en json
+  .then(res => { // Promise pour les éléments reçus du server
     console.log(res)
 
-
-    //Boucle for qui permet la création de notre page
+    console.table(res);
+    //Boucle for qui permet la création de notre page pour chaque produit (name, img, description, price)
 
 
     for (i = 0; i < res.length; i++) {
@@ -24,7 +24,7 @@ fetch('http://localhost:3000/api/teddies')
   </div>
     </div>
     `
-
+      //product.html# por récupérer la valeur après le hashtag (#) id
     }
 
 

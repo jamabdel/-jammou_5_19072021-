@@ -1,8 +1,7 @@
-//let id = new URL(window.location).searchParams.get('id')
-let id = window.location.hash.substring(1);
+let id = window.location.hash.substring(1); //Récupérer la valeur après le hashtag (#) id 
 console.log(id)
 
-fetch(`http://localhost:3000/api/teddies/${id}`)
+fetch(`http://localhost:3000/api/teddies/${id}`) //Utilisation de FETCH pour récupérer les données pour chaque id 
     .then(res => res.json())
     .then(res => {
 
@@ -35,20 +34,22 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
 
 
 
-
+        // Boucle pour générer les couleurs disponibles en fonction de l'ourson choisit
         for (i = 0; i < res.colors.length; i++) {
             document.getElementById("color_Select").innerHTML += `<option value="${res.colors[i]}" selected>${res.colors[i]}</option>`
             console.log(res.colors[i]);
         }
 
-        //let coloris = document.querySelector('select').value;
+
 
 
 
         const ajoutAuPanier = document.getElementById(`ajoutAuPanier`);
-
+        // Evènement pour écouter le clique sur le bouton ajoutAuPanier, qui va permettre l'envoi des options sélectionnées dans le local storage
         ajoutAuPanier.addEventListener('click', (event) => {
-            const commande = {
+            const panier = JSON.parse(localStorage.getItem("Panier")) || []
+            // Création d'un objet qui contient les options sélectionnées pour les envoyer dans le local storage
+            panier.push({
 
                 image: res.imageUrl,
                 name: res.name,
@@ -56,33 +57,14 @@ fetch(`http://localhost:3000/api/teddies/${id}`)
                 color: color_Select.value,
                 description: res.description,
                 price: res.price / 100,
-            }
-            let cart = localStorage.getItem("Panier");
-
-            if (cart) {
-                const order = JSON.parse(cart);
-                addToLocalStorage(order, commande);
-            } else {
-                const order = [];
-                addToLocalStorage(order, commande);
+            })
+            localStorage.setItem("Panier", JSON.stringify(panier));
+            alert("Article ajouté au panier !")
 
 
-            }
-            
-            console.log(cart);
 
         })
 
 
 
     });
-
-
-function addToLocalStorage(order, commande) {
-    order.push(commande);
-    const commandeString = JSON.stringify(order);
-    localStorage.setItem("Panier", commandeString);
-    alert("Article ajouté au panier !")
-
-
-}
